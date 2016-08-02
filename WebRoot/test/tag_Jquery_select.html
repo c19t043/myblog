@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tag_Jquery_select.html</title>
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+  </head>
+  
+  <body>
+		<select id="selectID" >
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+		</select>
+<script type="text/javascript">
+  	/*
+  	 *获取select元素
+  	 */
+  	var select = $("#selectID")[0];
+  	$(function(){
+  		/*
+  	  	 *页面初始化给select元素绑定change事件
+  	  	 */
+  	  	$("#selectID").change(function(){
+  	  		//1.获取选中项的文本,和value
+  	  		var selectedItem = $(this).find("option:selected");
+  	  		var text = selectedItem.text();
+  	  		console.log("text:"+text);
+  	  		//2.获取选中项的value
+  	  		var option_selected_value = selectedItem.val();
+  	  		console.log("option value:"+option_selected_value);
+  	  		var select_value = $(this).val();
+  	  		console.log("select_value:"+select_value);//select_value=option_selected_value
+  	  		//3.选中值的索引
+  	  		var index = $(this)[0].selectedIndex;//索引从0开始
+  	  		var option_index = $(selectedItem).index();
+  	  		console.log("index:"+index);
+  	  		console.log("option_index:"+option_index);//index=option_index
+  	  		//4.获取下拉框最大的索引值
+  	  		var MaxIndex = $("#selectID option:last").index();
+  	  		console.log("MaxIndex:"+MaxIndex);
+  	  		var lastOption_index = $(this).children("option:last").index();
+  	  		console.log("lastOption_index:"+lastOption_index);//MaxIndex=lastOption_index
+  	  	});
+  	});
+  </script>
+  </body>
+</html>
