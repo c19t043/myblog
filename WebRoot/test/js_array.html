@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>js_array.html</title>
+<script type="text/javascript" src="../js/common/jquery.js"></script>
+</head>
+<body>
+	<table border="1">
+		<tr onclick="insertObject(this)">
+			<td id="row1"><input type="checkbox" /></td>
+			<td id="mealid1">啤酒1</td>
+			<td id="orgid1">四川1</td>
+		</tr>
+		<tr onclick="insertObject(this)">
+			<td id="row2"><input type="checkbox" /></td>
+			<td id="mealid2">啤酒2</td>
+			<td id="orgid2">四川2</td>
+		</tr>
+		<tr onclick="insertObject(this)">
+			<td id="row3"><input type="checkbox" /></td>
+			<td id="mealid3">啤酒3</td>
+			<td id="orgid3">四川3</td>
+		</tr>
+		<tr></tr>
+	</table>
+	<script type="text/javascript">
+		var obj_arr = new Array();
+
+		/**
+		 * 向数组中添加元素,如果该元素不存在，添加,否则，不添加
+		 * @param mealid
+		 * @param mealname
+		 * @param orgid
+		 * @param orgname
+		 */
+		function addArray(mealid, mealname, orgid, orgname) {
+			var obj = {
+				mealid : mealid,
+				mealname : mealname,
+				orgid : orgid,
+				orgname : orgname
+			};
+
+			var addFlag = true;
+			for (var i = 0, len = obj_arr.length; i < len; i++) {
+				if (obj_arr[i].mealid == mealid && obj_arr[i].orgid == orgid) {
+					obj_arr.splice(i,1);addFlag = false;break;
+				}
+			}
+			if(addFlag) obj_arr.push(obj);
+			printContent();
+		}
+
+		/**
+		 * 将苏组中的元素信息插入到最后一个tr中
+		 */
+		function printContent() {
+			var content = "";
+			for (var i = 0, len = obj_arr.length; i < len; i++) {
+				content += "{" + obj_arr[i].mealname + "," + obj_arr[i].orgname
+						+ "}";
+			}
+			$("table tr:last").text(content);
+		}
+
+		/**
+		 * 拆分tr获取添加数组需要的元素
+		 * @param obj
+		 */
+		function insertObject(obj) {
+			var obj_children = $(obj).children();
+			var meal = obj_children[1];
+			var org = obj_children[2];
+			addArray($(meal).attr("id"), $(meal).text(), $(
+					org).attr("id"), $(org).text());
+		}
+	</script>
+</body>
+</html>
