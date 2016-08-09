@@ -21,7 +21,7 @@ public class InnoculationTest {
 		
 		
 		UserInoculationAppointmentInfo  userInoculationAppointmentInfo = 
-				innoculationOrderService.getUserInoculationAppointmentInfo(43L);
+				innoculationOrderService.getUserInoculationAppointmentInfo(57L);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		userInoculationAppointmentInfo.setOptTime(df.format(new Date()));

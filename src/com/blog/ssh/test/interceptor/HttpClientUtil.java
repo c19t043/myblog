@@ -18,13 +18,13 @@ public class HttpClientUtil {
 
 	private static Log log = LogFactory.getLog(HttpClientUtil.class);
 	
-	private final static String url = "http://192.168.0.224:8080/jqyy-mainweb/bsky/service";
+	private final static String url = "http://develop.jkscw.com.cn/bsky/service";
 	
 	private final static String authentication = "kybb"+"kybb123456"+"kybbSMFWRegisterInfo";
 	
 	public static void main(String[] args) throws Exception {
-		System.out.println(inocalutionOrderEdit("1", "2"));
-		//System.out.println(SMFWEdit("1","38"));
+		//System.out.println(inocalutionOrderEdit("0dccc3c80b2d4756a4aa54c6efc1775e", "3"));
+		System.out.println(SMFWEdit("1083bca8a49f44feab13675e39d97c8a","167"));
 	}
 	/**
 	 * 修改计免订单状态
