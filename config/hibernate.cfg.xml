@@ -23,5 +23,6 @@
 		
 		<mapping resource="com/blog/ssh/test/domain/TestTable.hbm.xml" />
 		<mapping resource="com/blog/ssh/test/domain/UserInoculationAppointmentInfo.hbm.xml" />
+		<mapping resource="com/blog/ssh/test/domain/OrderInfo.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

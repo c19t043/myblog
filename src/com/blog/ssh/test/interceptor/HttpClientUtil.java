@@ -23,8 +23,8 @@ public class HttpClientUtil {
 	private final static String authentication = "kybb"+"kybb123456"+"kybbSMFWRegisterInfo";
 	
 	public static void main(String[] args) throws Exception {
-		//System.out.println(inocalutionOrderEdit("0dccc3c80b2d4756a4aa54c6efc1775e", "3"));
-		System.out.println(SMFWEdit("1083bca8a49f44feab13675e39d97c8a","167"));
+		//System.out.println(inocalutionOrderEdit("1634e0631c7248538bb9a93dc00680b4", "3"));
+		System.out.println(SMFWEdit("6d99f986c284402eb738757dfc36d77e","167"));
 	}
 	/**
 	 * 修改计免订单状态

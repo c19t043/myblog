@@ -30,18 +30,18 @@
 	<!-- 修改计免订单状态 -->
 	
 	<!-- 修改上门服务订单状态 -->
-	<bean id="innoculationIntercetor"
-		class="com.blog.ssh.test.interceptor.InnoculationOrderInterceptor">
+	<bean id="SMFWIntercetor"
+		class="com.blog.ssh.test.interceptor.SMFWOrderInterceptor">
 		<property name="sessionFactoryDI" ref="sessionFactory"></property>
 	</bean>
 
 	<aop:config>
 		<aop:pointcut
-			expression="execution(* com.blog.ssh.test.service.impl.InnoculationOrderServiceImpl.updateOrderStatus(..))"
-			id="updateInnoculationPointCut" />
-		<aop:aspect ref="innoculationIntercetor">
+			expression="execution(* com.blog.ssh.test.service.impl.SMFWOrderServiceImpl.updateOrderInfo(..))"
+			id="updateSMFWPointCut" />
+		<aop:aspect ref="SMFWIntercetor">
 			<aop:after-returning method="afterReturning"
-				returning="val" pointcut-ref="updateInnoculationPointCut" />
+				returning="val" pointcut-ref="updateSMFWPointCut" />
 		</aop:aspect>
 	</aop:config>
 	<!-- 修改上门服务订单状态 -->
