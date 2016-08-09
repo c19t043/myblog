@@ -14,19 +14,35 @@
 						http://www.springframework.org/schema/tx/spring-tx.xsd"> 
 	<!-- 修改计免订单状态 -->
 	<bean id="innoculationIntercetor"
-		class="com.kybaby.newbussiness.medicalorgandbusiness.util.InnoculationOrderInterceptor">
+		class="com.blog.ssh.test.interceptor.InnoculationOrderInterceptor">
 		<property name="sessionFactoryDI" ref="sessionFactory"></property>
 	</bean>
 
 	<aop:config>
 		<aop:pointcut
-			expression="execution(* com.kybaby.newbussiness.medicalorgandbusiness.bo.impl.OrgBusinessManageServiceImpl.saveOrUpdateUserInoculationAppointmentInfo(..))"
+			expression="execution(* com.blog.ssh.test.service.impl.InnoculationOrderServiceImpl.updateOrderStatus(..))"
 			id="updateInnoculationPointCut" />
 		<aop:aspect ref="innoculationIntercetor">
 			<aop:after-returning method="afterReturning"
 				returning="val" pointcut-ref="updateInnoculationPointCut" />
-			<!-- <aop:after-throwing method="exceptionHandler"
-				throwing="ex" pointcut-ref="updateInnoculationPointCut" /> -->
 		</aop:aspect>
 	</aop:config>
+	<!-- 修改计免订单状态 -->
+	
+	<!-- 修改上门服务订单状态 -->
+	<bean id="innoculationIntercetor"
+		class="com.blog.ssh.test.interceptor.InnoculationOrderInterceptor">
+		<property name="sessionFactoryDI" ref="sessionFactory"></property>
+	</bean>
+
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.blog.ssh.test.service.impl.InnoculationOrderServiceImpl.updateOrderStatus(..))"
+			id="updateInnoculationPointCut" />
+		<aop:aspect ref="innoculationIntercetor">
+			<aop:after-returning method="afterReturning"
+				returning="val" pointcut-ref="updateInnoculationPointCut" />
+		</aop:aspect>
+	</aop:config>
+	<!-- 修改上门服务订单状态 -->
 </beans>						

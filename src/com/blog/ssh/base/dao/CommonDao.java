@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public interface ICommonDao<T> {
+public interface CommonDao<T> {
 	/**
 	 * 保存对象
 	 * @param entity

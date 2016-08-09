@@ -1,5 +1,6 @@
 package com.blog.ssh.test.interceptor;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.JoinPoint;
@@ -7,6 +8,8 @@ import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.blog.ssh.test.domain.UserInoculationAppointmentInfo;
 
 public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 	
@@ -18,7 +21,7 @@ public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 		this.setSessionFactory(sessionFactory);
 	}
 
-	public void afterReturning(JoinPoint joinPoint,Object val){
+	public void afterReturning(JoinPoint joinPoint,Object val) throws Throwable{
 		Object[] args = joinPoint.getArgs();
 		UserInoculationAppointmentInfo userInoculationAppointmentInfo = (UserInoculationAppointmentInfo) args[0];
 		
@@ -41,11 +44,27 @@ public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 			if(uniqueResult==null) return;
 			
 			String kyId = uniqueResult.toString();
+			String info = "";
 			try {
-				HttpClientUtil.inocalutionOrderEdit(kyId, ORDER_STATUS);
+				info = HttpClientUtil.inocalutionOrderEdit(kyId, ORDER_STATUS);
 			} catch (Exception e) {
-				log.error("修改快医计免订单状态失败");
+				printErrorInfo(userInoculationAppointmentInfo.getId(),info,e);
+			}
+			if(!info.equals("true")){
+				printErrorInfo(userInoculationAppointmentInfo.getId(),info,null);
 			}
 		}
+	}
+	private void printErrorInfo(Long id,String info,Exception ex){
+		StringBuilder sb = new StringBuilder();
+		sb.append("修改快医计免订单状态失败,订单id为"+id);
+		if(StringUtils.isNotBlank(info))
+			sb.append(System.lineSeparator());
+			sb.append("错误信息："+info);
+		if(ex!=null)
+			sb.append(System.lineSeparator());
+			sb.append("异常信息："+ex.toString());
+		//System.out.println(sb.toString());
+		log.error(sb.toString());
 	}
 }

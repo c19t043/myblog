@@ -6,9 +6,13 @@
 	<session-factory>
 		<!-- 数据库连接 -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myblog?useUnicode=true&amp;characterEncoding=utf-8</property>
+<!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myblog?useUnicode=true&amp;characterEncoding=utf-8</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.connection.password">123456</property> -->
+		
+		<property name="hibernate.connection.url">jdbc:mysql://101.204.240.249:3306/kybaby?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">kybaby_test</property>
 		
 		<!-- <property name="hibernate.connection.autocommit">true</property> -->
 		
@@ -18,6 +22,6 @@
 		<property name="hibernate.format_sql">true</property>
 		
 		<mapping resource="com/blog/ssh/test/domain/TestTable.hbm.xml" />
-		
+		<mapping resource="com/blog/ssh/test/domain/UserInoculationAppointmentInfo.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -18,11 +18,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.blog.ssh.base.dao.ICommonDao;
+import com.blog.ssh.base.dao.CommonDao;
 import com.blog.ssh.utils.TUtil;
 
 @SuppressWarnings("all")
-public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<T> {
+public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T> {
 	
 	Class entityClass = TUtil.getActualType(this.getClass());	
 

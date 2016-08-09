@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.blog.ssh.test.domain.UserInoculationAppointmentInfo" table="user_inoculation_appointment_info">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="sort" type="java.lang.String">
+            <column name="sort" length="10">
+                <comment>序列号</comment>
+            </column>
+        </property>
+        <property name="appointmentCode" type="java.lang.String">
+            <column name="appointment_code" length="30">
+                <comment>预约编码</comment>
+            </column>
+        </property>
+        <property name="measuringTemperature" type="java.lang.String">
+            <column name="measuring_temperature" length="10">
+                <comment>测量温度</comment>
+            </column>
+        </property>
+        <property name="nextVaccinationDate" type="java.lang.String">
+            <column name="next_vaccination_date" length="20">
+                <comment>下次接种日期</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="status" length="10">
+                <comment>状态：已预约、已取消、已预检、已登记</comment>
+            </column>
+        </property>
+        <property name="optTime" type="java.lang.String">
+            <column name="opt_time" length="20">
+                <comment>操作时间</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
