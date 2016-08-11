@@ -23,20 +23,22 @@ public class KybabyInnoculationOrderTest {
 	
 	@Test
 	public void testAdd(){
-		//String url = "http://dev.qiyico.com/kybabyBG/kyinterface/kyInterfaceAction.action";
-		String url = "http://localhost:8082/kybabyBG/kyinterface/kyInterfaceAction.action";
+		String url = "http://dev.qiyico.com/kybabyBG/kyinterface/kyInterfaceAction.action";
+		//String url = "http://localhost:8082/kybabyBG/kyinterface/kyInterfaceAction.action";
 		List<NameValuePair> list = new ArrayList<NameValuePair>();
 		
 		list.add(new BasicNameValuePair("action", "inoculationOrder"));
 		list.add(new BasicNameValuePair("kyOrderId", "kyorder1234"));
 		list.add(new BasicNameValuePair("kyUserId", "kyUserId123"));
-		list.add(new BasicNameValuePair("status", "已预约"));
+		list.add(new BasicNameValuePair("status", "1"));
 		list.add(new BasicNameValuePair("opt_time", "2016-08-09 16:00:00"));
 		list.add(new BasicNameValuePair("appointment_code", "ky0001"));
 		list.add(new BasicNameValuePair("ascription_organ", "7"));
 		list.add(new BasicNameValuePair("open_resources_detail_id", "197"));
 		list.add(new BasicNameValuePair("open_resources_id", "7"));
-		
+		list.add(new BasicNameValuePair("userName", "test001"));
+		list.add(new BasicNameValuePair("userPhone", "12345678901235"));
+		list.add(new BasicNameValuePair("userAddress", "110"));
 		String mes = doPost(url,list);
 		System.out.println(mes);
 	}

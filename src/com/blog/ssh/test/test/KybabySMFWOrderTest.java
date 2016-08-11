@@ -1,7 +1,9 @@
 package com.blog.ssh.test.test;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -27,18 +29,23 @@ public class KybabySMFWOrderTest {
 		String url = "http://localhost:8082/kybabyBG/kyinterface/kyInterfaceAction.action";
 		List<NameValuePair> list = new ArrayList<NameValuePair>();
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
 		list.add(new BasicNameValuePair("action", "SMFWOrder"));
 		list.add(new BasicNameValuePair("kyOrderId", "kyorder123"));
 		list.add(new BasicNameValuePair("kyUserId", "kyUserId123"));
-		list.add(new BasicNameValuePair("payMethod", "微信"));
-		list.add(new BasicNameValuePair("orderStatus", "已下单"));
-		list.add(new BasicNameValuePair("updateTime", "2016-08-09 16:00:00"));
+		list.add(new BasicNameValuePair("payMethod", "5"));
+		list.add(new BasicNameValuePair("orderStatus", "1"));
+		list.add(new BasicNameValuePair("updateTime", sdf.format(new Date())));
 		list.add(new BasicNameValuePair("totalPrice", "12"));
-		list.add(new BasicNameValuePair("productId", "3"));
-		list.add(new BasicNameValuePair("bespokeTime", "9:00-10:00"));
+		list.add(new BasicNameValuePair("productId", "25"));
+		list.add(new BasicNameValuePair("bespokeTime", "09:00-10:00"));
 		list.add(new BasicNameValuePair("bespokeDate", "2016-08-10"));
-		list.add(new BasicNameValuePair("submitTime", "2016-08-09 16:00:00"));
-		list.add(new BasicNameValuePair("orderNum", "20161212321"));
+		list.add(new BasicNameValuePair("submitTime", sdf.format(new Date())));
+		list.add(new BasicNameValuePair("orderNum", "201612123216"));
+		list.add(new BasicNameValuePair("userName", "test001"));
+		list.add(new BasicNameValuePair("userPhone", "12345678901234"));
+		list.add(new BasicNameValuePair("userAddress", "110"));
 		
 		String mes = doPost(url,list);
 		System.out.println(mes);

@@ -24,7 +24,7 @@ public class HttpClientUtil {
 	
 	public static void main(String[] args) throws Exception {
 		//System.out.println(inocalutionOrderEdit("1634e0631c7248538bb9a93dc00680b4", "3"));
-		System.out.println(SMFWEdit("6d99f986c284402eb738757dfc36d77e","167"));
+		System.out.println(SMFWEdit("840385f92a8047258011fbe8c9a0dca9","167"));
 	}
 	/**
 	 * 修改计免订单状态

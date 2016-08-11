@@ -15,8 +15,6 @@ public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 	
 	private Log log = LogFactory.getLog(InnoculationOrderInterceptor.class);
 	
-	private final String ORDER_STATUS = "已登记";
-	
 	public void setSessionFactoryDI(SessionFactory sessionFactory) {
 		this.setSessionFactory(sessionFactory);
 	}
@@ -36,7 +34,7 @@ public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 		 */
 		if(userInoculationAppointmentInfo!=null&&userInoculationAppointmentInfo.getId()!=null){
 			
-			if(!userInoculationAppointmentInfo.getStatus().equals(ORDER_STATUS)) return ;
+			if(!userInoculationAppointmentInfo.getStatus().equals("已登记")) return ;
 				
 			Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 			String sql = "SELECT kyid FROM kyinoculationorder2myorder WHERE id = :id";
@@ -49,12 +47,14 @@ public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 			String kyId = uniqueResult.toString();
 			String info = "";
 			try {
-				info = HttpClientUtil.inocalutionOrderEdit(kyId, ORDER_STATUS);
+				info = HttpClientUtil.inocalutionOrderEdit(kyId, 3+"");
 			} catch (Exception e) {
 				printErrorInfo(userInoculationAppointmentInfo.getId(),info,e);
 			}
 			if(!info.equals("true")){
 				printErrorInfo(userInoculationAppointmentInfo.getId(),info,null);
+			}else{
+				System.out.println("修改计免状态-操作："+info);
 			}
 		}
 	}
@@ -67,7 +67,7 @@ public class InnoculationOrderInterceptor extends HibernateDaoSupport{
 		if(ex!=null)
 			sb.append(System.lineSeparator());
 			sb.append("异常信息："+ex.toString());
-		//System.out.println(sb.toString());
+		System.out.println(sb.toString());
 		log.error(sb.toString());
 	}
 }
