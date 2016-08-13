@@ -19,10 +19,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-import com.blog.ssh.utils.HttpClientTest1;
+public class KybabySMFWOrderStatusTransformTest {
 
-public class KybabySMFWOrderTest {
-	
 	private static Log log = LogFactory.getLog(KybabySMFWOrderTest.class);
 	
 	@Test
@@ -31,27 +29,12 @@ public class KybabySMFWOrderTest {
 		String url = "http://localhost:8082/kybabyBG/kyinterface/kyInterfaceAction.action";
 		List<NameValuePair> list = new ArrayList<NameValuePair>();
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		list.add(new BasicNameValuePair("action", "SMFWOrder"));
-		list.add(new BasicNameValuePair("kyOrderId", "kyorder123"));
-		list.add(new BasicNameValuePair("kyUserId", "kyUserId123"));
-		list.add(new BasicNameValuePair("payMethod", "5"));
-		list.add(new BasicNameValuePair("orderStatus", "1"));
-		list.add(new BasicNameValuePair("updateTime", sdf.format(new Date())));
-		list.add(new BasicNameValuePair("totalPrice", "12"));
-		list.add(new BasicNameValuePair("productId", "25"));
-		list.add(new BasicNameValuePair("bespokeTime", "09:00-10:00"));
-		list.add(new BasicNameValuePair("bespokeDate", "2016-08-11"));
-		list.add(new BasicNameValuePair("submitTime", sdf.format(new Date())));
-		list.add(new BasicNameValuePair("orderNum", "2016121232179"));
-		list.add(new BasicNameValuePair("userName", "test001"));
-		list.add(new BasicNameValuePair("userPhone", "1234567890124"));
-		list.add(new BasicNameValuePair("userAddress", "110"));
+		list.add(new BasicNameValuePair("action", "OrderStatusTransform"));
+		list.add(new BasicNameValuePair("kyOrderId", "123123123"));
+		list.add(new BasicNameValuePair("orderStatus", "12"));
 		
-		String mes = HttpClientTest1.doPostSSL(url, list, null, null);
-		
-		//String mes = doPost(url,list);
+		String mes = doPost(url,list);
 		System.out.println(mes);
 	}
 	

@@ -16,7 +16,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 
-public class HttpClientUtil {
+public class HttpClientUtil_2 {
 
 	//private static Log log = LogFactory.getLog(HttpClientUtil.class);
 	
@@ -24,44 +24,35 @@ public class HttpClientUtil {
 	
 	private final static String authentication = "kybb"+"kybb123456"+"kybbSMFWRegisterInfo";
 	
-	private static HttpClientUtil instance;
-	public static HttpClientUtil getInstance(){
+	private static CloseableHttpClient httpClient;
+	private static PoolingHttpClientConnectionManager connManager;
+	private static RequestConfig globalConfig;
+	
+	private static HttpClientUtil_2 instance;
+	public static HttpClientUtil_2 getInstance(){
 		if(instance==null)
-			instance = new HttpClientUtil();
+			instance = new HttpClientUtil_2();
 		return instance;
 	}
 	
-	private static CloseableHttpClient getHttpClient(){
-		PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
+	static{
+		connManager = new PoolingHttpClientConnectionManager();
 		connManager.setMaxTotal(100);
 		connManager.setDefaultMaxPerRoute(20);
 
-		RequestConfig globalConfig = RequestConfig.custom().setConnectionRequestTimeout(5000) // 设置从connectManager获取Connection,超时时间，单位毫秒
+		globalConfig = RequestConfig.custom().setConnectionRequestTimeout(5000) // 设置从connectManager获取Connection,超时时间，单位毫秒
 				.setConnectTimeout(5000) // 设置连接超时时间，单位毫秒
 				.setSocketTimeout(5000) // 请求获取数据的超时时间，单位毫秒
 				.build();
 
-		CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig)// 设置全局请求配置
+		httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig)// 设置全局请求配置
 				.setConnectionManager(connManager)// 设置连接管理器
 				.build();
-		return httpClient;
-	}
-	
-	private static HttpPost getHttpPost(String url){
-		HttpPost httppost = new HttpPost(url);
-		RequestConfig config = RequestConfig.custom().setConnectionRequestTimeout(5000) // 设置从connectManager获取Connection,超时时间，单位毫秒
-				.setConnectTimeout(5000) // 设置连接超时时间，单位毫秒
-				.setSocketTimeout(5000) // 请求获取数据的超时时间，单位毫秒
-				.build();
-		httppost.setConfig(config);
-		return httppost;
 	}
 	
 	public static void main(String[] args) throws Exception {
-		for(int i=0;i<1000;i++){
-			System.out.println(i+"="+SMFWEdit("840385f92a8047258011fbe8c9a0dca9","167"));
-		}
 		//System.out.println(inocalutionOrderEdit("1634e0631c7248538bb9a93dc00680b4", "3"));
+		System.out.println(SMFWEdit("840385f92a8047258011fbe8c9a0dca9","167"));
 	}
 	/**
 	 * 修改计免订单状态
@@ -70,7 +61,7 @@ public class HttpClientUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String inocalutionOrderEdit(String orderId,String status){
+	public static String inocalutionOrderEdit(String orderId,String status)throws Exception{
 		long time = System.currentTimeMillis();
 		String sig =  EncryptUtil.getMD5Str(authentication+time);
 		//修改计免订单状态
@@ -83,26 +74,20 @@ public class HttpClientUtil {
 				+ "{\"JM_REGISTER_ID\":\""+orderId+"\","//订单id
 				+ "\"STATE\":\""+status+"\"}"//状态
 				+ "}";
+		HttpPost httppost = new HttpPost(url);
+		httppost.setConfig(globalConfig);
+		/*BasicHttpEntity requestBody = new BasicHttpEntity();
+		requestBody.setContent(new ByteArrayInputStream(postJson.getBytes("UTF-8")));
+		requestBody.setContentLength(postJson.getBytes("UTF-8").length);
+		httppost.setEntity(requestBody);*/
 		
-		CloseableHttpClient httpClient = getHttpClient();
-		HttpPost httpPost = getHttpPost(url);
-		
+		//StringEntity req_Entity = new StringEntity(postJson,Charsets.UTF_8);
 		StringEntity req_Entity = new StringEntity(postJson,"UTF-8");
-		httpPost.setEntity(req_Entity);
+		httppost.setEntity(req_Entity);
 		// 执行客户端请求
-		CloseableHttpResponse response = null;
-		String reponseStr = "";
-		try {
-			response = httpClient.execute(httpPost);
-			
-			reponseStr = getResponseContent(response);
-			
-		} catch (Exception e) {
-			System.out.println(e);
-			throw new RuntimeException(e);
-		}finally{
-			releaseConnection(httpClient, httpPost, response);
-		}
+		CloseableHttpResponse response = httpClient.execute(httppost);
+		
+		String reponseStr = getResponseContent(response);
 		
 		return reponseStr;
 	}
@@ -114,7 +99,7 @@ public class HttpClientUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String SMFWEdit(String orderId,String doctorId){
+	public static String SMFWEdit(String orderId,String doctorId) throws Exception{
 		long time = System.currentTimeMillis();
 		String sig =  EncryptUtil.getMD5Str(authentication+time);
 		//上门服务修改订单数据u
@@ -128,46 +113,23 @@ public class HttpClientUtil {
 				+ "\"BSKY_DOCTOR_ID\":\""+doctorId+"\"}"//医生id
 				+ "}";
 		
-		CloseableHttpClient httpClient = getHttpClient();
-		HttpPost httpPost = getHttpPost(url);
+		HttpPost httppost = new HttpPost(url);
+		httppost.setConfig(globalConfig);
+		/*		
+		BasicHttpEntity requestBody = new BasicHttpEntity();
+		requestBody.setContent(new ByteArrayInputStream(postJson.getBytes("UTF-8")));
+		requestBody.setContentLength(postJson.getBytes("UTF-8").length);
+		httppost.setEntity(requestBody);
+		*/
 		
+		//StringEntity req_Entity = new StringEntity(postJson,Charsets.UTF_8);
 		StringEntity req_Entity = new StringEntity(postJson,"UTF-8");
-		httpPost.setEntity(req_Entity);
+		httppost.setEntity(req_Entity);
 		// 执行客户端请求
-		CloseableHttpResponse response = null;
-		String reponseStr = "";
-		try {
-			response = httpClient.execute(httpPost);
-			
-			reponseStr = getResponseContent(response);
-		} catch (Exception e) {
-			System.out.println(e);
-			throw new RuntimeException(e);
-		}finally{
-			releaseConnection(httpClient, httpPost, response);
-		}
+		CloseableHttpResponse response = httpClient.execute(httppost);
+		String reponseStr = getResponseContent(response);
+		
 		return reponseStr;
-	}
-	
-	public static void releaseConnection(CloseableHttpClient httpClient,HttpPost httpPost,CloseableHttpResponse response){
-		if(httpClient!=null){
-			try {
-				httpClient.close();
-				httpClient.getConnectionManager().shutdown();
-			} catch (IOException e) {
-				System.out.println(e);
-			}
-		}
-		if(httpPost!=null){
-			httpPost.releaseConnection();
-		}
-		if(response!=null){
-			try {
-				response.close();
-			} catch (IOException e) {
-				System.out.println(e);
-			}
-		}
 	}
 	
 	private static String getResponseContent(CloseableHttpResponse response) {
@@ -177,20 +139,26 @@ public class HttpClientUtil {
 		try {
 			HttpEntity res_Entity = response.getEntity();
 			res_Entity = new BufferedHttpEntity(res_Entity);
-			if(res_Entity!=null){
-				InputStream in = res_Entity.getContent();
-				br = new BufferedReader(new InputStreamReader(in));
-	
-				if ((str = br.readLine()) != null) {
-					sb.append(str);
-				}
+			InputStream in = res_Entity.getContent();
+			br = new BufferedReader(new InputStreamReader(in));
+
+			if ((str = br.readLine()) != null) {
+				sb.append(str);
 			}
-		} catch (IOException e) {
+			
+		} catch (Exception e) {
 			System.out.println(e);
 		}finally{
 			if(br!=null){
 				try {
 					br.close();
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+			if (response != null) {
+				try {
+					response.close();
 				} catch (IOException e) {
 					System.out.println(e);
 				}

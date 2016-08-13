@@ -1,7 +1,5 @@
 package com.blog.ssh.test.domain;
 
-import com.sun.jna.platform.win32.Netapi32Util.UserInfo;
-
 /**
  * UserInoculationAppointmentInfo entity. @author MyEclipse Persistence Tools
  */

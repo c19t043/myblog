@@ -15,13 +15,13 @@ public class BSKYSMFWTest {
 		SMFWOrderService SMFWOrderServiceImpl = 
 				(SMFWOrderService) context.getBean(SMFWOrderService.SERVER_NAME);
 		
-		int ids [] = new int[]{};
-		for(int i=0,len=ids.length;i<len;i++){
-			OrderInfo orderInfo = SMFWOrderServiceImpl.getOrderInfo(308L);
+//		int ids [] = new int[]{};
+//		for(int i=0,len=ids.length;i<len;i++){
+			OrderInfo orderInfo = SMFWOrderServiceImpl.getOrderInfo(332L);
 			orderInfo.setOrderStatus("已接单");
-			orderInfo.setDoctorId(167L);
+			orderInfo.setDoctorId(167L);//3151647,,167
 			SMFWOrderServiceImpl.updateOrderInfo(orderInfo);
-		}
+		/*}*/
 		System.out.println("操作完成");
 	}
 }
