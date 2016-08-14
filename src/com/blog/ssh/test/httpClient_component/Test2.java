@@ -1,4 +1,4 @@
-package com.blog.ssh.utils;
+package com.blog.ssh.test.httpClient_component;
 
 import java.io.File;  
 import java.io.FileInputStream;  
@@ -35,7 +35,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;  
 import org.junit.Test;  
   
-public class Test1 {  
+public class Test2 {  
   
     @Test  
     public void jUnitTest() {  

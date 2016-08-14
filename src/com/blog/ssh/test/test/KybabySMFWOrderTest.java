@@ -19,7 +19,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-import com.blog.ssh.utils.HttpClientTest1;
+import com.blog.ssh.test.httpClient_component.HttpClientTest1;
 
 public class KybabySMFWOrderTest {
 	

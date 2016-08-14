@@ -1,4 +1,4 @@
-package com.blog.ssh.utils;
+package com.blog.ssh.test.httpClient_component;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
