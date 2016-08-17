@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title><%= title %></title>
+	</head>
+	<body>
+	<% if(messages){ %>
+		<%= messages %>
+	<% } else { %>
+		<h2>Hello </h2>
+	<% }  %>
+	<form action="/signin" method="post">
+		<h2>Hello </h2>
+		<div>
+			<label>UserName:</label>
+			<input type="text" name="username" placeHolder="username"/>
+		</div>
+		<div>
+			<label>Password:</label>
+			<input type="text" name="password" placeHolder="password"/>
+		</div>
+		<div>
+			<input type="submit" value="Sign In"/>
+		</div>
+	</form>
+	</body>
+</html>
