@@ -6,5 +6,6 @@
 	<constant name="struts.devMode" value="true"></constant>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	
-	<include file="struts/*.xml"></include>
+	<include file="struts/test.xml"></include>
+	<include file="struts/user.xml"></include>
 </struts>	

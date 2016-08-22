@@ -21,7 +21,10 @@ public class ServiceTest {
 		
 		TestTable testTable = new TestTable();
 		testTable.setName("测试Service");
-		
-		iTestTableService.save(testTable);
+		try {
+			iTestTableService.save(testTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

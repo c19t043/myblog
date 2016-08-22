@@ -6,6 +6,6 @@ public interface InnoculationOrderService {
 	
 	public static final String SERVER_NAME = "com.blog.ssh.test.service.impl.InnoculationOrderServiceImpl";
 	
-	public void updateOrderStatus(UserInoculationAppointmentInfo userInoculationAppointmentInfo);
-	public UserInoculationAppointmentInfo getUserInoculationAppointmentInfo(Long id);
+	public void updateOrderStatus(UserInoculationAppointmentInfo userInoculationAppointmentInfo) throws Exception;
+	public UserInoculationAppointmentInfo getUserInoculationAppointmentInfo(Long id)throws Exception;
 }

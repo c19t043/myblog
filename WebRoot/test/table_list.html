@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>table_list.html</title>
+    <meta name="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+  		<span>昵称:</span><input type="text" name="nickname" placeHolder="nickname"/><br/>
+    	<span>用户名:</span><input type="text" name="username" placeHolder="username"/><br/>
+    	<span>密码:</span><input type="text" name="password" placeHolder="password"/><br/>
+    	<input type="button" id="bt_submit" value="注册"/>
+    	<table>
+    		<tr>
+    			<th>昵称</th>
+    			<th>用户名</th>
+    			<th>密码</th>
+    		</tr>
+    	</table>
+    	<script type="text/javascript" src="../js/common/jquery-1.8.3.min.js"></script>
+    	<script type="text/javascript">
+    		//var global_app_name = "myBlogSSH";
+    		/**初始化方法*/
+			$(document).ready(function(){
+				$("table").hide();
+				$("#bt_submit").on("click",registUser);
+			});
+    		
+    		/**用户注册*/
+    		function registUser(){
+    			var nickname = $("[name='nickname']").val();
+    			var username = $("[name='username']").val();
+    			var password = $("[name='password']").val();
+    			
+        		$.ajax({
+        			url:"html/userRegist.action",
+        			type:"Post",
+        			async:false,
+        			data:{
+        				"nickname":nickname,
+        				"username":username,
+        				"password":password,
+        			},
+        			success:function(result){
+        				var user_array = result;
+        				var table_append_content = "";
+        				for(var i=0,len=user_array.length;i<len;i++){
+        					table_append_content += create_one_tr_of_user(user_array[i]);
+        				}
+        				$("table").append(table_append_content).show();
+        			}
+        		});
+    		}
+    		
+    		/**创建一个tr,包含用户数据*/
+    		function create_one_tr_of_user(user_obj){
+    			var content = 
+    				"<tr>"
+	    				+"<td>"+user_obj.nickname+"</td>"
+	    				+"<td>"+user_obj.username+"</td>"
+	    				+"<td>"+user_obj.password+"</td>"
+    				+"</tr>";
+    			return	content;
+    		}
+    	</script>
+  </body>
+</html>

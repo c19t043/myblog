@@ -19,15 +19,21 @@ public class InnoculationTest {
 		InnoculationOrderService innoculationOrderService = 
 				(InnoculationOrderService) context.getBean(InnoculationOrderService.SERVER_NAME);
 		
-		
-		UserInoculationAppointmentInfo  userInoculationAppointmentInfo = 
-				innoculationOrderService.getUserInoculationAppointmentInfo(63L);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		userInoculationAppointmentInfo.setOptTime(df.format(new Date()));
-		userInoculationAppointmentInfo.setStatus("已登记");
-		
-		innoculationOrderService.updateOrderStatus(userInoculationAppointmentInfo);
+		try{
+			UserInoculationAppointmentInfo  userInoculationAppointmentInfo = 
+					innoculationOrderService.getUserInoculationAppointmentInfo(63L);
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			userInoculationAppointmentInfo.setOptTime(df.format(new Date()));
+			userInoculationAppointmentInfo.setStatus("已登记");
+			
+			innoculationOrderService.updateOrderStatus(userInoculationAppointmentInfo);
+		}catch(Exception e){
+			
+		}finally{
+			
+		}
+	
 		System.out.println("操作完成");
 	}
 }

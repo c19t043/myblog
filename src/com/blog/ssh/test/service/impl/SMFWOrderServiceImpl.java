@@ -15,12 +15,12 @@ public class SMFWOrderServiceImpl implements SMFWOrderService{
 	private SMFWOrderDao sMFWOrderDao;
 	
 	@Override
-	public void updateOrderInfo(OrderInfo orderInfo) {
+	public void updateOrderInfo(OrderInfo orderInfo) throws Exception {
 		sMFWOrderDao.update(orderInfo);
 	}
 
 	@Override
-	public OrderInfo getOrderInfo(Long id) {
+	public OrderInfo getOrderInfo(Long id) throws Exception {
 		return sMFWOrderDao.findObjectById(id);
 	}
 }

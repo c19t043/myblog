@@ -15,7 +15,7 @@ public class TestTableServiceImpl implements ITestTableService {
 	private ITestTableDao iTestTableDao;
 	
 	@Override
-	public void save(TestTable testTable) {
+	public void save(TestTable testTable) throws Exception {
 		iTestTableDao.save(testTable);
 	}
 	

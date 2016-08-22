@@ -39,7 +39,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T
 	 * 保存对象
 	 * @param entity
 	 */
-	public void save(T entity) {
+	public void save(T entity) throws Exception{
 		this.getHibernateTemplate().save(entity);
 	}
 
@@ -47,7 +47,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T
 	 * 根据主键删除对象
 	 * @param ids
 	 */
-	public void deleteObjectByIDs(Serializable... ids) {
+	public void deleteObjectByIDs(Serializable... ids)throws Exception {
 		if(ids!=null&&ids.length>0){
 			for(Serializable id : ids){
 				Object entity = this.findObjectById(id);
@@ -60,7 +60,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T
 	 * 更新对象
 	 * @param entity
 	 */
-	public void update(T entity) {
+	public void update(T entity) throws Exception{
 		this.getHibernateTemplate().update(entity);
 	}
 	/**
@@ -68,7 +68,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T
 	 * @param id
 	 * @return
 	 */
-	public T findObjectById(Serializable id) {
+	public T findObjectById(Serializable id)throws Exception {
 		return (T) this.getHibernateTemplate().get(entityClass, id);
 	}
 
@@ -80,7 +80,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T
 	 * @return
 	 */
 	public List<T> findObjectCollectionByConditionWithNoPage(String condition,
-			final Object[] params, Map<String, String> orderby) {
+			final Object[] params, Map<String, String> orderby)throws Exception {
 		String oderByCondition = getOrderByCondition(orderby);
 		final String finallyHql = condition+oderByCondition; 
 		return this.getHibernateTemplate().find(finallyHql, params);
@@ -97,7 +97,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements CommonDao<T
 	}
 	
 	private String getOrderByCondition(Map<String, String> orderby){
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder("");
 		if(orderby!=null&&orderby.size()>0){
 			sb.append(" order by ");
 			for (Entry<String, String> entry : orderby.entrySet()) {

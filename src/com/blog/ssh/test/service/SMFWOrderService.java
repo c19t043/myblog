@@ -6,6 +6,6 @@ public interface SMFWOrderService {
 	
 	public static final String SERVER_NAME = "com.blog.ssh.test.service.impl.SMFWOrderServiceImpl";
 	
-	public void updateOrderInfo(OrderInfo orderInfo);
-	public OrderInfo getOrderInfo(Long id);
+	public void updateOrderInfo(OrderInfo orderInfo)throws Exception;
+	public OrderInfo getOrderInfo(Long id)throws Exception;
 }

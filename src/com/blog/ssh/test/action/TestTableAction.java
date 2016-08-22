@@ -21,7 +21,11 @@ public class TestTableAction extends BaseAction<TestTable>{
 	private ITestTableService iTestTableService;
 	
 	public String add(){
-		iTestTableService.save(testTable);
+		try {
+			iTestTableService.save(testTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
 

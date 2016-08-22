@@ -16,7 +16,7 @@ public class InnoculationOrderServiceImpl implements InnoculationOrderService{
 	
 	@Override
 	public void updateOrderStatus(
-			UserInoculationAppointmentInfo userInoculationAppointmentInfo) {
+			UserInoculationAppointmentInfo userInoculationAppointmentInfo) throws Exception {
 		if(userInoculationAppointmentInfo.getId()!=null){
 			innoculationOrderDao.update(userInoculationAppointmentInfo);
 		}
@@ -24,7 +24,7 @@ public class InnoculationOrderServiceImpl implements InnoculationOrderService{
 
 	@Override
 	public UserInoculationAppointmentInfo getUserInoculationAppointmentInfo(
-			Long id) {
+			Long id) throws Exception {
 		return innoculationOrderDao.findObjectById(id);
 	}
 }
