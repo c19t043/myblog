@@ -1,4 +1,4 @@
-package com.blog.ssh.test.cxf.client.domain.org.tempuri;
+package com.blog.ssh.test.cxf.client.generateFile;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

@@ -1,2 +1,2 @@
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://tempuri.org/", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.blog.ssh.test.cxf.client.domain.org.tempuri;
+package com.blog.ssh.test.cxf.client.generateFile;

@@ -10,10 +10,12 @@ import javax.xml.ws.Service;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
-import com.blog.ssh.test.cxf.client.domain.org.tempuri.ToolInterface;
-import com.blog.ssh.test.cxf.client.domain.org.tempuri.ToolInterfaceSoap;
+import com.blog.ssh.test.cxf.client.generateFile.ToolInterface;
+import com.blog.ssh.test.cxf.client.generateFile.ToolInterfaceSoap;
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 
 
@@ -64,12 +66,17 @@ public class ClientTest {
 						+"</Body>";
 		String res = toolInterfaceSoap.interactionOperating(request);
 		System.out.println(res);
-       /* Document doc = DocumentHelper.parseText(res);  
+		
+		Document doc = DocumentHelper.parseText(res); 
+       /*  
         //获取根节点  
         Element root = doc.getRootElement();  
         List<Element> elements = root.elements();
         for (Element element : elements) {
         	System.out.println(element.getText());
 		}*/
+		OutputFormat createPrettyPrint = OutputFormat.createPrettyPrint();
+		XMLWriter write = new XMLWriter(System.out,createPrettyPrint);
+		write.write(doc);
 	}
 }

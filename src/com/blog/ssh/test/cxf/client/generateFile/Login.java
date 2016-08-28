@@ -1,9 +1,8 @@
 
-package com.blog.ssh.test.cxf.client.domain.org.tempuri;
+package com.blog.ssh.test.cxf.client.generateFile;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="LoginResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="request" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +28,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "loginResult"
+    "request"
 })
-@XmlRootElement(name = "LoginResponse")
-public class LoginResponse {
+@XmlRootElement(name = "Login")
+public class Login {
 
-    @XmlElement(name = "LoginResult")
-    protected String loginResult;
+    protected String request;
 
     /**
-     * ��ȡloginResult���Ե�ֵ��
+     * ��ȡrequest���Ե�ֵ��
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLoginResult() {
-        return loginResult;
+    public String getRequest() {
+        return request;
     }
 
     /**
-     * ����loginResult���Ե�ֵ��
+     * ����request���Ե�ֵ��
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLoginResult(String value) {
-        this.loginResult = value;
+    public void setRequest(String value) {
+        this.request = value;
     }
 
 }

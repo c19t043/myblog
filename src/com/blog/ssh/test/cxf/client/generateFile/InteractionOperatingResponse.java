@@ -1,8 +1,9 @@
 
-package com.blog.ssh.test.cxf.client.domain.org.tempuri;
+package com.blog.ssh.test.cxf.client.generateFile;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="request" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="InteractionOperatingResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,35 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "request"
+    "interactionOperatingResult"
 })
-@XmlRootElement(name = "Login")
-public class Login {
+@XmlRootElement(name = "InteractionOperatingResponse")
+public class InteractionOperatingResponse {
 
-    protected String request;
+    @XmlElement(name = "InteractionOperatingResult")
+    protected String interactionOperatingResult;
 
     /**
-     * ��ȡrequest���Ե�ֵ��
+     * ��ȡinteractionOperatingResult���Ե�ֵ��
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getRequest() {
-        return request;
+    public String getInteractionOperatingResult() {
+        return interactionOperatingResult;
     }
 
     /**
-     * ����request���Ե�ֵ��
+     * ����interactionOperatingResult���Ե�ֵ��
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setRequest(String value) {
-        this.request = value;
+    public void setInteractionOperatingResult(String value) {
+        this.interactionOperatingResult = value;
     }
 
 }

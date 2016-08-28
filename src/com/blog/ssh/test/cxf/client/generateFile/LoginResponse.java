@@ -1,5 +1,5 @@
 
-package com.blog.ssh.test.cxf.client.domain.org.tempuri;
+package com.blog.ssh.test.cxf.client.generateFile;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="InteractionOperatingResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="LoginResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "interactionOperatingResult"
+    "loginResult"
 })
-@XmlRootElement(name = "InteractionOperatingResponse")
-public class InteractionOperatingResponse {
+@XmlRootElement(name = "LoginResponse")
+public class LoginResponse {
 
-    @XmlElement(name = "InteractionOperatingResult")
-    protected String interactionOperatingResult;
+    @XmlElement(name = "LoginResult")
+    protected String loginResult;
 
     /**
-     * ��ȡinteractionOperatingResult���Ե�ֵ��
+     * ��ȡloginResult���Ե�ֵ��
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getInteractionOperatingResult() {
-        return interactionOperatingResult;
+    public String getLoginResult() {
+        return loginResult;
     }
 
     /**
-     * ����interactionOperatingResult���Ե�ֵ��
+     * ����loginResult���Ե�ֵ��
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setInteractionOperatingResult(String value) {
-        this.interactionOperatingResult = value;
+    public void setLoginResult(String value) {
+        this.loginResult = value;
     }
 
 }
