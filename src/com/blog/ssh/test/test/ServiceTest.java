@@ -5,8 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.blog.ssh.test.domain.TestTable;
-import com.blog.ssh.test.service.ITestTableService;
+import com.blog.ssh.test.cxf.client.service.SPInterfaceService;
 
 public class ServiceTest {
 	ApplicationContext context;
@@ -17,12 +16,9 @@ public class ServiceTest {
 	
 	@Test
 	public void testAdd(){
-		ITestTableService iTestTableService = (ITestTableService) context.getBean(ITestTableService.SERVICE_NAME);
-		
-		TestTable testTable = new TestTable();
-		testTable.setName("测试Service");
+		SPInterfaceService spInterfaceService = (SPInterfaceService) context.getBean("spInterfaceService");
 		try {
-			iTestTableService.save(testTable);
+			spInterfaceService.getSPAppointmentSchedule();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

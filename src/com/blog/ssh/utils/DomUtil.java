@@ -12,6 +12,30 @@ import org.dom4j.Element;
 
 public class DomUtil {
 	
+	@SuppressWarnings("all")
+	public static String createXml(Object obj){
+		Method[] methods = obj.getClass().getMethods();
+		Document doc = DocumentHelper.createDocument();
+		doc.setXMLEncoding("UTF-8");
+		Element rootElement = doc.addElement("Body");
+		Element reqElement = rootElement.addElement("Request");
+		for(Method method : methods){
+			String methodName = method.getName();
+			if(methodName.startsWith("getSp_")){
+				try {
+					String propertyName = methodName.substring("getSp_".length());
+					Object retVal = method.invoke(obj, null);
+					reqElement.addElement(propertyName).addText(retVal==null?"":retVal.toString()); 
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		}
+		String xmlStr = doc.asXML();
+		//System.out.println(xmlStr);
+		return xmlStr;
+	}
+	
 	public static Document parseText(String xmlStr){
 		Document doc = null;
 		try {
@@ -36,6 +60,11 @@ public class DomUtil {
 	}
 	
 	private static void Element2Bean(Element element,Object obj){
+		setPropertyByBeanUtil(element,obj);
+		//setProperty(obj, element.getName(), element.getTextTrim());
+	}
+	@SuppressWarnings("unused")
+	private static void setPropertyByBeanUtil(Element element,Object obj){
 		String elementName = element.getName();
 		String firstChar = elementName.substring(0, 1);
 		elementName=elementName.replaceFirst(firstChar, firstChar.toLowerCase());

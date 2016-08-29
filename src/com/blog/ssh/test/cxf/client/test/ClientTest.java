@@ -1,82 +1,31 @@
 package com.blog.ssh.test.cxf.client.test;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.blog.ssh.test.cxf.client.generateFile.ToolInterface;
-import com.blog.ssh.test.cxf.client.generateFile.ToolInterfaceSoap;
-import com.opensymphony.xwork2.interceptor.annotations.Before;
+import com.blog.ssh.test.domain.TestTable;
+import com.blog.ssh.test.service.ITestTableService;
 
 
 public class ClientTest {
-	
-	public void test1(){
-		ToolInterface tf = new ToolInterface();
-		ToolInterfaceSoap toolInterfaceSoap = tf.getToolInterfaceSoap();
-		String request = "";
-		String login = toolInterfaceSoap.login(request);
-		String interactionOperating = toolInterfaceSoap.interactionOperating(request);
-	}
-	
-	public void test2() throws MalformedURLException {
-			//创建服务视图
-		//URL wsdlDocumentLocation = new URL("file:///d:/WeatherWebService.wsdl");
-		//也可以指定公网地址
-		String request = "";
-		port.login(request);
-		port.interactionOperating(request);
-	}
-	
-	
-    private ToolInterfaceSoap port;
-	
+	ApplicationContext context;
 	@Before
-	public void init() throws MalformedURLException{
-		URL wsdlDocumentLocation = new URL("http://171.221.218.21:5418/ToolInterface.asmx?wsdl");
-
-		QName serviceName = new QName("http://tempuri.org/", "ToolInterface");
-		
-		Service service = Service.create(wsdlDocumentLocation, serviceName);
-		//得到portType
-		ToolInterfaceSoap port = service.getPort(ToolInterfaceSoap.class);
+	public void init(){
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	}
 	
 	@Test
-	public void getOrg_guahao_scheduling() throws Exception{
-		ToolInterface tf = new ToolInterface();
-		ToolInterfaceSoap toolInterfaceSoap = tf.getToolInterfaceSoap();
-		String request = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-						+"<Body>"
-						  +"<Request>"
-						   +"<OperType>101</OperType>"
-						   +"<OrgCode>3d715fb3-5fd4-4f36-9be9-7cca29de01ca</OrgCode>"
-						   +"<QueryString></QueryString>"
-						  +"</Request>"
-						+"</Body>";
-		String res = toolInterfaceSoap.interactionOperating(request);
-		System.out.println(res);
+	public void testAdd(){
+		ITestTableService iTestTableService = (ITestTableService) context.getBean("");
 		
-		Document doc = DocumentHelper.parseText(res); 
-       /*  
-        //获取根节点  
-        Element root = doc.getRootElement();  
-        List<Element> elements = root.elements();
-        for (Element element : elements) {
-        	System.out.println(element.getText());
-		}*/
-		OutputFormat createPrettyPrint = OutputFormat.createPrettyPrint();
-		XMLWriter write = new XMLWriter(System.out,createPrettyPrint);
-		write.write(doc);
+		TestTable testTable = new TestTable();
+		testTable.setName("测试Service");
+		try {
+			iTestTableService.save(testTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

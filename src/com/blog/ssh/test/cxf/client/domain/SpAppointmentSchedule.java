@@ -1,7 +1,10 @@
 package com.blog.ssh.test.cxf.client.domain;
 
-public class SPAppointmentSchedule {
+import java.io.Serializable;
+
+public class SpAppointmentSchedule implements Serializable{
 	
+	private Long id;
 	private String registerID;//安排ID
 	private String registerNO;//安排号
 	private String registerName;//安排名
@@ -14,6 +17,36 @@ public class SPAppointmentSchedule {
 	private String exTime;//出诊时间
 	private String money;//金额
 	
+	//----------------------查询条件
+	private String sp_OperType;
+	private String sp_OrgCode;
+	private String sp_QueryString;
+	//----------------------查询条件
+	
+	public Long getId() {
+		return id;
+	}
+	public String getSp_OperType() {
+		return sp_OperType;
+	}
+	public void setSp_OperType(String sp_OperType) {
+		this.sp_OperType = sp_OperType;
+	}
+	public String getSp_OrgCode() {
+		return sp_OrgCode;
+	}
+	public void setSp_OrgCode(String sp_OrgCode) {
+		this.sp_OrgCode = sp_OrgCode;
+	}
+	public String getSp_QueryString() {
+		return sp_QueryString;
+	}
+	public void setSp_QueryString(String sp_QueryString) {
+		this.sp_QueryString = sp_QueryString;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getMoney() {
 		return money;
 	}
