@@ -10,8 +10,10 @@ public interface SPInterfaceService {
 	/**  获取挂号安排  */
 	public List<SpAppointmentSchedule> getSPAppointmentSchedule()throws Exception;
 	/**  获取医生列表  */
-	public List<SpDoctorInfo> getSPDoctorInfos();
+	public List<SpDoctorInfo> getSPDoctorInfos()throws Exception;
 	/**  获取就诊记录  */
 	public List<SpVisitRecord> getSpVisitRecord();
 	/**  获取医嘱信息  */
+	/**  会员信息同步  */
+	public void saveUserInfo()throws Exception;
 }

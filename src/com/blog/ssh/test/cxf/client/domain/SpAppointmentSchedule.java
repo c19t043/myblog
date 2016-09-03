@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class SpAppointmentSchedule implements Serializable{
 	
 	private Long id;
+	private String orgId;//机构ID
 	private String registerID;//安排ID
 	private String registerNO;//安排号
 	private String registerName;//安排名
@@ -16,15 +17,39 @@ public class SpAppointmentSchedule implements Serializable{
 	private String doctor;//医生名称
 	private String exTime;//出诊时间
 	private String money;//金额
-	
+	private String optime;//操作时间
 	//----------------------查询条件
 	private String sp_OperType;
 	private String sp_OrgCode;
 	private String sp_QueryString;
 	//----------------------查询条件
 	
+	public SpAppointmentSchedule(String doctorID, String doctor) {
+		super();
+		this.doctorID = doctorID;
+		this.doctor = doctor;
+	}
+	
+	public String getOptime() {
+		return optime;
+	}
+
+	public void setOptime(String optime) {
+		this.optime = optime;
+	}
+
+	public SpAppointmentSchedule() {
+	}
+
 	public Long getId() {
 		return id;
+	}
+
+	public String getOrgId() {
+		return orgId;
+	}
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
 	}
 	public String getSp_OperType() {
 		return sp_OperType;
