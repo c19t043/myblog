@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "ToolInterface", 
-                  wsdlLocation = "http://171.221.218.21:5418/ToolInterface.asmx?wsdl",
+                  wsdlLocation = "http://171.221.218.21:5678/ToolInterface.asmx?wsdl",
                   targetNamespace = "http://tempuri.org/") 
 public class ToolInterface extends Service {
 
@@ -27,11 +27,11 @@ public class ToolInterface extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("http://171.221.218.21:5418/ToolInterface.asmx?wsdl");
+            url = new URL("http://171.221.218.21:5678/ToolInterface.asmx?wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(ToolInterface.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "http://171.221.218.21:5418/ToolInterface.asmx?wsdl");
+                     "Can not initialize the default wsdl from {0}", "http://171.221.218.21:5678/ToolInterface.asmx?wsdl");
         }
         WSDL_LOCATION = url;
     }

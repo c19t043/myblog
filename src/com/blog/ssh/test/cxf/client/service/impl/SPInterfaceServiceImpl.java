@@ -35,13 +35,15 @@ public class SPInterfaceServiceImpl implements SPInterfaceService{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
 	/**  会员信息同步  */
 	public void saveUserInfo()throws Exception{
 		SpUserInfo spUserInfo = new SpUserInfo();
 		spUserInfo.setSp_OperType("003");
 		spUserInfo.setSp_OrgCode("3d715fb3-5fd4-4f36-9be9-7cca29de01ca");
-		spUserInfo.setSp_BloodCD("5");
-		spUserInfo.setSp_RHCD("2");
 		
 		List<Object> reqData = getReqData(spUserInfo, SpUserInfo.class);
 		System.out.println(reqData.size());

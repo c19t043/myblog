@@ -2,10 +2,24 @@ package com.blog.ssh.test.cxf.client.domain;
 
 public class SpUserInfo {
 	
-	private String residentID;
-	
-	//----------------查询条件
+	private String sp_residentID;
 	private String sp_OperType;
+	private String sp_OrgCode;
+	private String sp_QueryString;
+	
+	private String residentID;
+	private String residentName;
+	private String sexCD;
+	private String birthDay;
+	private String paperNum;
+	private String selfPhone;
+	private String address;
+	private String doctorID;
+	private String doctor;
+	private String gxy;
+	private String tnb;
+	//----------------查询条件
+/*	private String sp_OperType;
 	private String sp_OrgCode;
 	private String sp_ResidentID;
 	private String sp_ResidentName;
@@ -17,25 +31,12 @@ public class SpUserInfo {
 	private String sp_CardNo;
 	private String sp_CardType;
 	private String sp_BloodCD;
-	private String sp_RHCD;
-	
-	public String getSp_RHCD() {
-		return sp_RHCD;
+	private String sp_RHCD;*/
+	public String getSp_residentID() {
+		return sp_residentID;
 	}
-	public void setSp_RHCD(String sp_RHCD) {
-		this.sp_RHCD = sp_RHCD;
-	}
-	public String getSp_BloodCD() {
-		return sp_BloodCD;
-	}
-	public void setSp_BloodCD(String sp_BloodCD) {
-		this.sp_BloodCD = sp_BloodCD;
-	}
-	public String getResidentID() {
-		return residentID;
-	}
-	public void setResidentID(String residentID) {
-		this.residentID = residentID;
+	public void setSp_residentID(String sp_residentID) {
+		this.sp_residentID = sp_residentID;
 	}
 	public String getSp_OperType() {
 		return sp_OperType;
@@ -49,58 +50,77 @@ public class SpUserInfo {
 	public void setSp_OrgCode(String sp_OrgCode) {
 		this.sp_OrgCode = sp_OrgCode;
 	}
-	public String getSp_ResidentID() {
-		return sp_ResidentID;
+	public String getSp_QueryString() {
+		return sp_QueryString;
 	}
-	public void setSp_ResidentID(String sp_ResidentID) {
-		this.sp_ResidentID = sp_ResidentID;
+	public void setSp_QueryString(String sp_QueryString) {
+		this.sp_QueryString = sp_QueryString;
 	}
-	public String getSp_ResidentName() {
-		return sp_ResidentName;
+	public String getResidentID() {
+		return residentID;
 	}
-	public void setSp_ResidentName(String sp_ResidentName) {
-		this.sp_ResidentName = sp_ResidentName;
+	public void setResidentID(String residentID) {
+		this.residentID = residentID;
 	}
-	public String getSp_SexCD() {
-		return sp_SexCD;
+	public String getResidentName() {
+		return residentName;
 	}
-	public void setSp_SexCD(String sp_SexCD) {
-		this.sp_SexCD = sp_SexCD;
+	public void setResidentName(String residentName) {
+		this.residentName = residentName;
 	}
-	public String getSp_Age() {
-		return sp_Age;
+	public String getSexCD() {
+		return sexCD;
 	}
-	public void setSp_Age(String sp_Age) {
-		this.sp_Age = sp_Age;
+	public void setSexCD(String sexCD) {
+		this.sexCD = sexCD;
 	}
-	public String getSp_BirthDay() {
-		return sp_BirthDay;
+	public String getBirthDay() {
+		return birthDay;
 	}
-	public void setSp_BirthDay(String sp_BirthDay) {
-		this.sp_BirthDay = sp_BirthDay;
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
 	}
-	public String getSp_PaperNum() {
-		return sp_PaperNum;
+	public String getPaperNum() {
+		return paperNum;
 	}
-	public void setSp_PaperNum(String sp_PaperNum) {
-		this.sp_PaperNum = sp_PaperNum;
+	public void setPaperNum(String paperNum) {
+		this.paperNum = paperNum;
 	}
-	public String getSp_SelfPhone() {
-		return sp_SelfPhone;
+	public String getSelfPhone() {
+		return selfPhone;
 	}
-	public void setSp_SelfPhone(String sp_SelfPhone) {
-		this.sp_SelfPhone = sp_SelfPhone;
+	public void setSelfPhone(String selfPhone) {
+		this.selfPhone = selfPhone;
 	}
-	public String getSp_CardNo() {
-		return sp_CardNo;
+	public String getAddress() {
+		return address;
 	}
-	public void setSp_CardNo(String sp_CardNo) {
-		this.sp_CardNo = sp_CardNo;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getSp_CardType() {
-		return sp_CardType;
+	public String getDoctorID() {
+		return doctorID;
 	}
-	public void setSp_CardType(String sp_CardType) {
-		this.sp_CardType = sp_CardType;
+	public void setDoctorID(String doctorID) {
+		this.doctorID = doctorID;
 	}
+	public String getDoctor() {
+		return doctor;
+	}
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
+	public String getGxy() {
+		return gxy;
+	}
+	public void setGxy(String gxy) {
+		this.gxy = gxy;
+	}
+	public String getTnb() {
+		return tnb;
+	}
+	public void setTnb(String tnb) {
+		this.tnb = tnb;
+	}
+	
 }
