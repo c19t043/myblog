@@ -84,13 +84,13 @@ public class SPInterfaceServiceImpl implements SPInterfaceService{
 		list.addAll(reqData);
 		
 		//第九人民医院
-		appointment.setSp_OrgCode("1cc69208-1d1d-43f8-925b-39fc437e320d");
+		/*appointment.setSp_OrgCode("1cc69208-1d1d-43f8-925b-39fc437e320d");
 		reqData = getReqData(appointment,SpAppointmentSchedule.class);
 		for (SpAppointmentSchedule spAppointmentSchedule : reqData) {
 			spAppointmentSchedule.setOrgId(appointment.getSp_OrgCode());
 			spAppointmentSchedule.setOptime(save_Regist_time);
 		}
-		list.addAll(reqData);
+		list.addAll(reqData);*/
 		spInterfaceDao.saveAppointmentSchedule(list);
 		return list;
 	}
